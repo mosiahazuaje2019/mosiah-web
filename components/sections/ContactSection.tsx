@@ -8,6 +8,9 @@ import { Button } from "@/components/ui/Button";
 import { Mail, ExternalLink, Code } from "lucide-react";
 
 export function ContactSection() {
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,14 +27,29 @@ export function ContactSection() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Create mailto link
-    const subject = `Contact from ${formData.name}`;
-    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
-    window.location.href = `mailto:mosiahazuaje2010@gmail.com?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`;
+    setStatus("sending");
+
+    const form = e.currentTarget;
+    const website = new FormData(form).get("website");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, website }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      setFormData({ name: "", email: "", message: "" });
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   };
 
   const socialLinks = [
@@ -69,7 +87,7 @@ export function ContactSection() {
             Have a web project that needs to <GradientText>perform?</GradientText>
           </h2>
           <p className="text-gray-600 text-lg">
-            I'm available for web development, Full Stack projects, technical SEO improvements
+            I&apos;m available for web development, Full Stack projects, technical SEO improvements
             and modern web application development.
           </p>
         </motion.div>
@@ -82,6 +100,16 @@ export function ContactSection() {
           viewport={{ once: true, amount: 0.3 }}
           className="flex flex-wrap justify-center gap-6 mb-12"
         >
+          <div className="absolute -left-[9999px]" aria-hidden="true">
+            <label htmlFor="website">Website</label>
+            <input
+              id="website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
           {socialLinks.map((link) => {
             const Icon = link.icon;
             return (
@@ -121,6 +149,7 @@ export function ContactSection() {
                 value={formData.name}
                 onChange={handleChange}
                 required
+                maxLength={100}
                 className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
                 placeholder="Your name"
               />
@@ -136,6 +165,7 @@ export function ContactSection() {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                maxLength={254}
                 className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
                 placeholder="your@email.com"
               />
@@ -152,6 +182,8 @@ export function ContactSection() {
               value={formData.message}
               onChange={handleChange}
               required
+              minLength={10}
+              maxLength={5000}
               rows={5}
               className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors resize-none"
               placeholder="Tell me about your project..."
@@ -159,9 +191,28 @@ export function ContactSection() {
           </div>
 
           <div className="flex gap-4 pt-4">
-            <Button type="submit" size="lg" className="flex-1">
-              Send Message
+            <Button
+              type="submit"
+              size="lg"
+              className="flex-1 disabled:cursor-not-allowed disabled:opacity-60"
+              disabled={status === "sending"}
+            >
+              {status === "sending" ? "Sending..." : "Send Message"}
             </Button>
+          </div>
+
+          <div aria-live="polite">
+            {status === "success" && (
+              <p className="text-sm text-green-700">
+                Thanks! Your message has been sent successfully.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-sm text-red-700">
+                Your message could not be sent. Please try again or email me
+                directly.
+              </p>
+            )}
           </div>
         </motion.form>
 
@@ -172,7 +223,7 @@ export function ContactSection() {
           viewport={{ once: true, amount: 0.3 }}
           className="text-center text-gray-600 text-sm pt-8"
         >
-          I'll get back to you as soon as possible.
+          I&apos;ll get back to you as soon as possible.
         </motion.p>
       </div>
     </SectionContainer>
