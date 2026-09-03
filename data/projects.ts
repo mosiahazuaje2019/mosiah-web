@@ -1,0 +1,86 @@
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  contributions: string[];
+  image?: string;
+  imageAlt?: string;
+  website?: string;
+  details?: string;
+}
+
+export const projects: Project[] = [
+  {
+    id: "cabosaferide",
+    title: "CaboSafeRide",
+    description:
+      "Transportation and booking platform supporting reservations, payments, automated booking workflows and back-office management.",
+    technologies: ["Laravel", "Vue.js", "Inertia.js", "Stripe", "MySQL", "AWS"],
+    image: "/projects/cabosaferide-preview.png",
+    imageAlt: "CaboSafeRide booking management dashboard",
+    contributions: [
+      "Backend development",
+      "Stripe payment gateway integration",
+      "Booking automation",
+      "Admin dashboards",
+      "Scheduled jobs",
+      "Performance improvements",
+    ],
+  },
+  {
+    id: "my-partner-sam",
+    title: "My Partner Sam",
+    description:
+      "Health and wellness platform that helps users plan meals, discover recipes and organize personalized nutrition routines.",
+    technologies: [
+      "Laravel",
+      "Laravel Queues",
+      "React",
+      "Azure",
+      "REST APIs",
+      "Stripe",
+      "Redis",
+      "SQL",
+    ],
+    image: "/projects/my-partner-sam-preview.png",
+    imageAlt: "My Partner Sam meal planning application interface",
+    contributions: [
+      "Backend APIs",
+      "Frontend development",
+      "Stripe payment gateway integration",
+      "Automated daily meal plan generation at scale",
+      "Cloud integrations",
+      "Production maintenance",
+    ],
+  },
+  {
+    id: "gestimedical",
+    title: "Gestimedical",
+    description:
+      "Healthcare platform supported by a complete GCP infrastructure for its frontend, backend, database and file storage, optimized for reliable operation and lower cloud costs.",
+    technologies: ["GCP", "Cloud Infrastructure", "SQL", "Cloud Storage"],
+    image: "/projects/gestimedical-preview.png",
+    imageAlt: "Gestimedical healthcare management dashboard",
+    contributions: [
+      "GCP infrastructure architecture and deployment",
+      "Frontend and backend environment provisioning",
+      "Database and cloud storage setup",
+      "Cloud resource and cost optimization",
+    ],
+  },
+  {
+    id: "vyrtium",
+    title: "Vyrtium",
+    description:
+      "Financial technology platform with modern React frontend, NestJS backend, user plans, transaction workflows and payment integrations.",
+    technologies: ["React", "NestJS", "Node.js", "REST APIs", "NOWPayments", "Stripe"],
+    contributions: [
+      "Frontend development",
+      "Backend APIs",
+      "Payment integrations",
+      "Business workflows",
+      "Cloud integrations",
+    ],
+  },
+];
