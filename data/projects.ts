@@ -74,12 +74,12 @@ export const projects: Project[] = [
   },
   {
     id: "select-leaders",
-    title: "Select Leaders",
+    title: "SelectLeaders",
     description:
-      "Real estate recruitment platform connecting companies with talent and helping professionals find their next opportunity. Developed for Select Leaders through Curotec.",
+      "Commercial real estate job network helping employers post opportunities and connect with talent, while professionals search and apply for roles from entry-level to executive. Worked with SelectLeaders through Curotec.",
     technologies: ["Laravel", "Livewire", "MySQL", "OpenSearch"],
     image: "/projects/select-leaders-preview.png",
-    imageAlt: "Select Leaders real estate job listings with remote filters",
+    imageAlt: "SelectLeaders commercial real estate job listings with remote filters",
     imageAspectRatio: "1774 / 887",
     contributions: [
       "Interactive frontend development with Livewire",
