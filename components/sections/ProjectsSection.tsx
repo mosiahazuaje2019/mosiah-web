@@ -100,7 +100,7 @@ export function ProjectsSection() {
                       </div>
 
                       {project.image ? (
-                        <div className="aspect-[3/2] overflow-hidden">
+                        <div className="aspect-[3/2] overflow-hidden" style={project.imageAspectRatio ? { aspectRatio: project.imageAspectRatio } : undefined}>
                           <Image src={project.image} alt={project.imageAlt || `${project.title} project preview`} width={1536} height={1024} sizes="(max-width: 1024px) 100vw, 58vw" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]" />
                         </div>
                       ) : (

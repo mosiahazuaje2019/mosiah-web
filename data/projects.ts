@@ -6,6 +6,7 @@ export interface Project {
   contributions: string[];
   image?: string;
   imageAlt?: string;
+  imageAspectRatio?: string;
   previewDevice?: "mobile";
   website?: string;
   details?: string;
@@ -77,6 +78,9 @@ export const projects: Project[] = [
     description:
       "Real estate recruitment platform connecting companies with talent and helping professionals find their next opportunity. Developed for Select Leaders through Curotec.",
     technologies: ["Laravel", "Livewire", "MySQL", "OpenSearch"],
+    image: "/projects/select-leaders-preview.png",
+    imageAlt: "Select Leaders real estate job listings with remote filters",
+    imageAspectRatio: "1774 / 887",
     contributions: [
       "Interactive frontend development with Livewire",
       "Backend development with Laravel",
