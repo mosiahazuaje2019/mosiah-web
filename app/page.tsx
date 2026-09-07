@@ -8,9 +8,11 @@ import { TechStackSection } from "@/components/sections/TechStackSection";
 import { WorkflowSection } from "@/components/sections/WorkflowSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Footer } from "@/components/sections/Footer";
+import { LanguageProvider } from "@/components/i18n/LanguageProvider";
 
 export default function Home() {
   return (
+    <LanguageProvider>
     <div className="min-h-screen bg-white text-gray-900 flex flex-col">
       <Navbar />
       <main className="flex-1">
@@ -25,5 +27,6 @@ export default function Home() {
       </main>
       <Footer />
     </div>
+    </LanguageProvider>
   );
 }

@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/i18n/LanguageProvider";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
@@ -13,6 +15,7 @@ const projectStyles = [
 ];
 
 export function ProjectsSection() {
+  const { t } = useLanguage();
   return (
     <section id="work" className="relative overflow-hidden bg-[#f7f7fb] px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
       <div className="pointer-events-none absolute inset-0">
@@ -31,21 +34,14 @@ export function ProjectsSection() {
         >
           <div>
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-purple-700 shadow-sm backdrop-blur">
-              <Sparkles size={14} /> Selected work
-            </div>
-            <h2 className="text-5xl font-black tracking-[-0.055em] text-gray-950 sm:text-6xl lg:text-7xl">
-              Built to make
-              <span className="block bg-gradient-to-r from-purple-600 via-fuchsia-500 to-blue-600 bg-clip-text text-transparent">an impact.</span>
+              <Sparkles size={14} />{t("Selected work")}{" "}</div>
+            <h2 className="text-5xl font-black tracking-[-0.055em] text-gray-950 sm:text-6xl lg:text-7xl">{t("Built to make")}{" "}<span className="block bg-gradient-to-r from-purple-600 via-fuchsia-500 to-blue-600 bg-clip-text text-transparent">{t("an impact.")}</span>
             </h2>
           </div>
           <div className="lg:pb-2">
-            <p className="max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">
-              Production products where engineering, business logic and thoughtful experiences come together.
-            </p>
+            <p className="max-w-2xl text-lg leading-relaxed text-gray-600 sm:text-xl">{t("Production products where engineering, business logic and thoughtful experiences come together.")}{" "}</p>
             <div className="mt-7 flex items-center gap-4 text-sm font-semibold text-gray-500">
-              <span className="h-px w-14 bg-gray-300" />
-              Scroll to explore {String(projects.length).padStart(2, "0")} case studies
-            </div>
+              <span className="h-px w-14 bg-gray-300" />{t("Scroll to explore")}{" "}{String(projects.length).padStart(2, "0")}{" "}{t("case studies")}{" "}</div>
           </div>
         </motion.header>
 
@@ -74,7 +70,7 @@ export function ProjectsSection() {
                         <div className="relative aspect-[438/933] overflow-hidden rounded-[2rem] bg-white">
                           <Image
                             src={project.image}
-                            alt={project.imageAlt || `${project.title} app preview`}
+                            alt={t(project.imageAlt || project.title)}
                             width={1536}
                             height={1024}
                             sizes="1053px"
@@ -101,7 +97,7 @@ export function ProjectsSection() {
 
                       {project.image ? (
                         <div className="aspect-[3/2] overflow-hidden" style={project.imageAspectRatio ? { aspectRatio: project.imageAspectRatio } : undefined}>
-                          <Image src={project.image} alt={project.imageAlt || `${project.title} project preview`} width={1536} height={1024} sizes="(max-width: 1024px) 100vw, 58vw" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]" />
+                          <Image src={project.image} alt={t(project.imageAlt || project.title)} width={1536} height={1024} sizes="(max-width: 1024px) 100vw, 58vw" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]" />
                         </div>
                       ) : (
                         <div className={`relative aspect-[3/2] overflow-hidden bg-gradient-to-br ${style.surface}`}>
@@ -128,7 +124,7 @@ export function ProjectsSection() {
                   </div>
                   )}
                   <div className={`absolute -bottom-4 rounded-full bg-gray-950 px-5 py-2 text-xs font-bold tracking-[0.18em] text-white shadow-xl ${reversed ? "-right-3 sm:-right-5" : "-left-3 sm:-left-5"}`}>
-                    {project.image ? "PRODUCT PREVIEW" : "CASE STUDY"}
+                    {t(project.image ? "PRODUCT PREVIEW" : "CASE STUDY")}
                   </div>
                 </div>
 
@@ -140,29 +136,28 @@ export function ProjectsSection() {
                     <span className="h-px flex-1 bg-gray-200" />
                   </div>
                   <h3 className="text-4xl font-black tracking-[-0.04em] text-gray-950 sm:text-5xl">{project.title}</h3>
-                  <p className="mt-5 text-base leading-7 text-gray-600 sm:text-lg">{project.description}</p>
+                  <p className="mt-5 text-base leading-7 text-gray-600 sm:text-lg">{t(project.description)}</p>
 
                   <div className="mt-7 flex flex-wrap gap-2">
                     {project.technologies.map((technology) => (
-                      <span key={technology} className="rounded-full border border-gray-200 bg-white/80 px-3.5 py-1.5 text-xs font-semibold text-gray-700 shadow-sm">{technology}</span>
+                      <span key={technology} className="rounded-full border border-gray-200 bg-white/80 px-3.5 py-1.5 text-xs font-semibold text-gray-700 shadow-sm">{t(technology)}</span>
                     ))}
                   </div>
 
                   <div className="mt-8 border-l-2 border-gray-200 pl-5">
-                    <p className="mb-3 text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">Key contributions</p>
+                    <p className="mb-3 text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">{t("Key contributions")}</p>
                     <ul className="space-y-2.5">
                       {project.contributions.slice(0, 4).map((contribution) => (
                         <li key={contribution} className="flex gap-3 text-sm font-medium text-gray-700">
                           <ArrowUpRight size={16} className="mt-0.5 shrink-0 text-purple-600" />
-                          {contribution}
+                          {t(contribution)}
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   {project.website && (
-                    <a href={project.website} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 font-bold text-gray-950 hover:text-purple-700">
-                      Explore project <ArrowUpRight size={18} />
+                    <a href={project.website} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 font-bold text-gray-950 hover:text-purple-700">{t("Explore project")}{" "}<ArrowUpRight size={18} />
                     </a>
                   )}
                 </div>

@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/i18n/LanguageProvider";
+
 import { motion } from "framer-motion";
 import {
   BarChart3,
@@ -22,6 +24,7 @@ const stepStyles = [
 ];
 
 export function WorkflowSection() {
+  const { t } = useLanguage();
   return (
     <section id="process" className="relative overflow-hidden bg-slate-950 px-4 py-24 text-white sm:px-6 lg:px-8 lg:py-32">
       <div className="pointer-events-none absolute inset-0">
@@ -40,18 +43,11 @@ export function WorkflowSection() {
         >
           <div>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-violet-200">
-              <Sparkles size={14} /> From idea to impact
-            </div>
-            <h2 className="text-5xl font-black tracking-[-0.055em] sm:text-6xl lg:text-7xl">
-              A clear process.
-              <span className="block bg-gradient-to-r from-violet-400 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">
-                Better outcomes.
-              </span>
+              <Sparkles size={14} />{t("From idea to impact")}{" "}</div>
+            <h2 className="text-5xl font-black tracking-[-0.055em] sm:text-6xl lg:text-7xl">{t("A clear process.")}{" "}<span className="block bg-gradient-to-r from-violet-400 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">{t("Better outcomes.")}{" "}</span>
             </h2>
           </div>
-          <p className="max-w-xl text-lg leading-8 text-slate-300 lg:justify-self-end lg:pb-2 sm:text-xl">
-            Every project moves through a focused cycle—aligning business goals, thoughtful design and solid engineering with measurable improvement.
-          </p>
+          <p className="max-w-xl text-lg leading-8 text-slate-300 lg:justify-self-end lg:pb-2 sm:text-xl">{t("Every project moves through a focused cycle—aligning business goals, thoughtful design and solid engineering with measurable improvement.")}{" "}</p>
         </motion.header>
 
         <div className="relative">
@@ -80,8 +76,8 @@ export function WorkflowSection() {
                     <span className={`mb-5 block font-mono text-xs font-bold tracking-[0.2em] ${style.color}`}>
                       0{index + 1}
                     </span>
-                    <h3 className="text-xl font-black tracking-tight text-white">{item.step}</h3>
-                    <p className="mt-3 text-sm leading-6 text-slate-400">{item.description}</p>
+                    <h3 className="text-xl font-black tracking-tight text-white">{t(item.step)}</h3>
+                    <p className="mt-3 text-sm leading-6 text-slate-400">{t(item.description)}</p>
                   </div>
                 </motion.article>
               );
@@ -101,13 +97,11 @@ export function WorkflowSection() {
               <RefreshCw size={19} />
             </div>
             <div>
-              <p className="font-bold text-white">Launch is the beginning, not the finish line.</p>
-              <p className="mt-1 text-sm text-slate-400">Measure, learn and improve based on real user data.</p>
+              <p className="font-bold text-white">{t("Launch is the beginning, not the finish line.")}</p>
+              <p className="mt-1 text-sm text-slate-400">{t("Measure, learn and improve based on real user data.")}</p>
             </div>
           </div>
-          <a href="#contact" className="shrink-0 font-bold text-cyan-300 hover:text-cyan-200">
-            Start a project →
-          </a>
+          <a href="#contact" className="shrink-0 font-bold text-cyan-300 hover:text-cyan-200">{t("Start a project →")}{" "}</a>
         </motion.div>
       </div>
     </section>

@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/i18n/LanguageProvider";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionContainer } from "@/components/ui/SectionContainer";
@@ -8,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { Mail, ExternalLink, Code } from "lucide-react";
 
 export function ContactSection() {
+  const { t } = useLanguage();
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
@@ -83,13 +86,9 @@ export function ContactSection() {
           viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Have a web project that needs to <GradientText>perform?</GradientText>
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">{t("Have a web project that needs to")}{" "}<GradientText>{t("perform?")}</GradientText>
           </h2>
-          <p className="text-gray-600 text-lg">
-            I&apos;m available for web development, Full Stack projects, technical SEO improvements
-            and modern web application development.
-          </p>
+          <p className="text-gray-600 text-lg">{t("I'm available for web development, Full Stack projects, technical SEO improvements and modern web application development.")}{" "}</p>
         </motion.div>
 
         {/* Contact Methods */}
@@ -101,7 +100,7 @@ export function ContactSection() {
           className="flex flex-wrap justify-center gap-6 mb-12"
         >
           <div className="absolute -left-[9999px]" aria-hidden="true">
-            <label htmlFor="website">Website</label>
+            <label htmlFor="website">{t("Website")}</label>
             <input
               id="website"
               name="website"
@@ -122,7 +121,7 @@ export function ContactSection() {
                 className={`flex items-center gap-3 px-6 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 hover:border-purple-400 transition-all ${link.color}`}
               >
                 <Icon size={20} />
-                <span>{link.label}</span>
+                <span>{t(link.label)}</span>
               </motion.a>
             );
           })}
@@ -139,9 +138,7 @@ export function ContactSection() {
         >
           <div className="grid sm:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                Name
-              </label>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">{t("Name")}{" "}</label>
               <input
                 type="text"
                 id="name"
@@ -151,13 +148,11 @@ export function ContactSection() {
                 required
                 maxLength={100}
                 className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
-                placeholder="Your name"
+                placeholder={t("Your name")}
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                Email
-              </label>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">{t("Email")}{" "}</label>
               <input
                 type="email"
                 id="email"
@@ -167,15 +162,13 @@ export function ContactSection() {
                 required
                 maxLength={254}
                 className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
-                placeholder="your@email.com"
+                placeholder={t("your@email.com")}
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-              Message
-            </label>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">{t("Message")}{" "}</label>
             <textarea
               id="message"
               name="message"
@@ -186,7 +179,7 @@ export function ContactSection() {
               maxLength={5000}
               rows={5}
               className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors resize-none"
-              placeholder="Tell me about your project..."
+              placeholder={t("Tell me about your project...")}
             />
           </div>
 
@@ -197,21 +190,16 @@ export function ContactSection() {
               className="flex-1 disabled:cursor-not-allowed disabled:opacity-60"
               disabled={status === "sending"}
             >
-              {status === "sending" ? "Sending..." : "Send Message"}
+              {t(status === "sending" ? "Sending..." : "Send Message")}
             </Button>
           </div>
 
           <div aria-live="polite">
             {status === "success" && (
-              <p className="text-sm text-green-700">
-                Thanks! Your message has been sent successfully.
-              </p>
+              <p className="text-sm text-green-700">{t("Thanks! Your message has been sent successfully.")}{" "}</p>
             )}
             {status === "error" && (
-              <p className="text-sm text-red-700">
-                Your message could not be sent. Please try again or email me
-                directly.
-              </p>
+              <p className="text-sm text-red-700">{t("Your message could not be sent. Please try again or email me directly.")}{" "}</p>
             )}
           </div>
         </motion.form>
@@ -222,9 +210,7 @@ export function ContactSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true, amount: 0.3 }}
           className="text-center text-gray-600 text-sm pt-8"
-        >
-          I&apos;ll get back to you as soon as possible.
-        </motion.p>
+        >{t("I'll get back to you as soon as possible.")}{" "}</motion.p>
       </div>
     </SectionContainer>
   );

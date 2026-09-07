@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/i18n/LanguageProvider";
+
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -19,6 +21,7 @@ const capabilities = [
 ];
 
 export function HeroSection() {
+  const { t } = useLanguage();
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-slate-950 px-4 pb-20 pt-32 text-white sm:px-6 lg:px-8 lg:pb-24 lg:pt-36">
       <div className="pointer-events-none absolute inset-0">
@@ -44,27 +47,17 @@ export function HeroSection() {
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-300" />
-            </span>
-            Available for selected projects
-          </motion.div>
+            </span>{t("Available for selected projects")}{" "}</motion.div>
 
           <motion.h1
             variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.75 } } }}
             className="max-w-4xl text-5xl font-black leading-[0.98] tracking-[-0.06em] sm:text-6xl lg:text-7xl xl:text-[5.4rem]"
-          >
-            I build fast, scalable
-            <span className="block bg-gradient-to-r from-violet-400 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">
-              &amp; search-ready
-            </span>
-            web experiences.
-          </motion.h1>
+          >{t("I build fast, scalable")}{" "}<span className="block bg-gradient-to-r from-violet-400 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">{t("& search-ready")}{" "}</span>{t("web experiences.")}{" "}</motion.h1>
 
           <motion.p
             variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.65 } } }}
             className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl"
-          >
-            Full Stack Developer turning complex ideas into polished digital products—engineered for users, search engines and long-term growth.
-          </motion.p>
+          >{t("Full Stack Developer turning complex ideas into polished digital products—engineered for users, search engines and long-term growth.")}{" "}</motion.p>
 
           <motion.div
             variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { duration: 0.65 } } }}
@@ -73,26 +66,24 @@ export function HeroSection() {
             <button
               onClick={() => document.getElementById("work")?.scrollIntoView({ behavior: "smooth" })}
               className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 px-7 py-4 font-bold text-white shadow-lg shadow-violet-950/30 transition-all hover:-translate-y-0.5 hover:from-violet-500 hover:to-blue-500"
-            >
-              Explore my work <ArrowRight size={19} className="transition-transform group-hover:translate-x-1" />
+            >{t("Explore my work")}{" "}<ArrowRight size={19} className="transition-transform group-hover:translate-x-1" />
             </button>
             <a
               href="/cv/mosiah-azuaje-cv-2026.pdf"
               download="Mosiah_Azuaje_CV_2026.pdf"
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.07] px-7 py-4 font-bold text-white backdrop-blur transition-all hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.11]"
             >
-              <Download size={19} /> Download CV
-            </a>
+              <Download size={19} />{t("Download CV")}{" "}</a>
           </motion.div>
 
           <motion.div
             variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.7 } } }}
             className="mt-10 flex flex-wrap items-center gap-2 border-t border-white/10 pt-6"
           >
-            <span className="mr-2 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">Core stack</span>
+            <span className="mr-2 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">{t("Core stack")}</span>
             {technologies.map((technology) => (
               <span key={technology} className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-semibold text-slate-300">
-                {technology}
+                {t(technology)}
               </span>
             ))}
           </motion.div>
@@ -113,14 +104,14 @@ export function HeroSection() {
                   <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
                   <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
                 </div>
-                <span className="mx-auto font-mono text-[10px] tracking-[0.18em] text-slate-500">PRODUCT.SYSTEM</span>
+                <span className="mx-auto font-mono text-[10px] tracking-[0.18em] text-slate-500">{t("PRODUCT.SYSTEM")}</span>
               </div>
 
               <div className="p-7">
                 <div className="mb-7 flex items-center justify-between">
                   <div>
-                    <p className="font-mono text-xs text-violet-300">{"// production-ready"}</p>
-                    <h2 className="mt-2 text-2xl font-black tracking-tight">Engineering that performs.</h2>
+                    <p className="font-mono text-xs text-violet-300">{t("// production-ready")}</p>
+                    <h2 className="mt-2 text-2xl font-black tracking-tight">{t("Engineering that performs.")}</h2>
                   </div>
                   <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-blue-500">
                     <CheckCircle2 size={21} />
@@ -138,8 +129,8 @@ export function HeroSection() {
                       <div className={`flex h-10 w-10 items-center justify-center rounded-xl border ${surface}`}>
                         <Icon size={19} className={color} />
                       </div>
-                      <span className="font-semibold text-slate-300">{label}</span>
-                      <span className={`ml-auto font-mono text-sm font-bold ${color}`}>{value}</span>
+                      <span className="font-semibold text-slate-300">{t(label)}</span>
+                      <span className={`ml-auto font-mono text-sm font-bold ${color}`}>{t(value)}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -148,7 +139,7 @@ export function HeroSection() {
                   {[{ value: "7+", label: "Years" }, { value: "15+", label: "Apps" }, { value: "100%", label: "Committed" }].map((metric) => (
                     <div key={metric.label}>
                       <p className="text-xl font-black text-white">{metric.value}</p>
-                      <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">{metric.label}</p>
+                      <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">{t(metric.label)}</p>
                     </div>
                   ))}
                 </div>

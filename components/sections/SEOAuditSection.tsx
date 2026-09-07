@@ -1,10 +1,13 @@
 "use client";
 
+import { useLanguage } from "@/components/i18n/LanguageProvider";
+
 import { motion } from "framer-motion";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { GradientText } from "@/components/ui/GradientText";
 
 export function SEOAuditSection() {
+  const { t } = useLanguage();
   const scores = [
     { label: "Performance", value: 95, color: "from-green-400 to-emerald-400" },
     { label: "Accessibility", value: 95, color: "from-blue-400 to-cyan-400" },
@@ -21,15 +24,10 @@ export function SEOAuditSection() {
         viewport={{ once: true, amount: 0.3 }}
         className="text-center mb-14"
       >
-        <div className="mx-auto mb-5 w-fit rounded-full border border-gray-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-gray-500 shadow-sm">
-          Measurable quality
-        </div>
-        <h2 className="text-4xl sm:text-5xl font-black tracking-[-0.04em] text-gray-950 mb-4">
-          Performance you can <GradientText>measure.</GradientText>
+        <div className="mx-auto mb-5 w-fit rounded-full border border-gray-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-gray-500 shadow-sm">{t("Measurable quality")}{" "}</div>
+        <h2 className="text-4xl sm:text-5xl font-black tracking-[-0.04em] text-gray-950 mb-4">{t("Performance you can")}{" "}<GradientText>{t("measure.")}</GradientText>
         </h2>
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-          Lighthouse targets that keep speed, accessibility and search readiness accountable.
-        </p>
+        <p className="text-gray-600 text-lg max-w-2xl mx-auto">{t("Lighthouse targets that keep speed, accessibility and search readiness accountable.")}{" "}</p>
       </motion.div>
 
       <div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -89,7 +87,7 @@ export function SEOAuditSection() {
             </div>
 
             {/* Label */}
-            <p className="text-center font-bold text-gray-900">{score.label}</p>
+            <p className="text-center font-bold text-gray-900">{t(score.label)}</p>
           </motion.div>
         ))}
       </div>

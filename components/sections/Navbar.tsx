@@ -1,10 +1,13 @@
 "use client";
 
+import { LanguageSwitcher, useLanguage } from "@/components/i18n/LanguageProvider";
+
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 export function Navbar() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -74,7 +77,7 @@ export function Navbar() {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-4">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -87,31 +90,35 @@ export function Navbar() {
                   : "text-slate-300 hover:text-white after:scale-x-0"
               }`}
             >
-              {link.name}
+              {t(link.name)}
             </a>
           ))}
           <Button
             size="sm"
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            Let&apos;s Work Together
-          </Button>
+          >{t("Let's Work Together")}{" "}</Button>
         </div>
 
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher />
         {/* Mobile Menu Button */}
         <button
-          className="text-white transition-colors md:hidden"
+          className="text-white transition-colors lg:hidden"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
+          aria-label={t("Toggle menu")}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
       {isOpen && (
         <div
-          className={`md:hidden backdrop-blur-md border-b px-4 py-4 space-y-4 transition-colors duration-300 ${
+          id="mobile-navigation"
+          className={`lg:hidden backdrop-blur-md border-b px-4 py-4 space-y-4 transition-colors duration-300 ${
             isScrolled
               ? "bg-blue-950/95 border-blue-800/40"
               : "bg-white/95 border-gray-200"
@@ -133,16 +140,14 @@ export function Navbar() {
                     : "text-gray-700 hover:text-gray-900"
               }`}
             >
-              {link.name}
+              {t(link.name)}
             </a>
           ))}
           <Button
             size="sm"
             className="w-full"
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-          >
-            Let&apos;s Work Together
-          </Button>
+          >{t("Let's Work Together")}{" "}</Button>
         </div>
       )}
     </nav>
