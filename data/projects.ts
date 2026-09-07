@@ -18,11 +18,13 @@ export const projects: Project[] = [
     title: "CaboSafeRide",
     description:
       "Transportation and booking platform supporting reservations, payments, automated booking workflows and back-office management.",
-    technologies: ["Laravel", "Vue.js", "Inertia.js", "Stripe", "MySQL", "AWS"],
+    technologies: ["PHP 8.1", "Laravel", "Vue.js", "Inertia.js", "Stripe", "MySQL", "AWS"],
     image: "/projects/cabosaferide-preview.png",
     imageAlt: "CaboSafeRide booking management dashboard",
     contributions: [
       "Backend development",
+      "Backend service migration from PHP 7.4 to PHP 8.1",
+      "Laravel for newer payment services",
       "Stripe payment gateway integration",
       "Booking automation",
       "Admin dashboards",
@@ -62,11 +64,13 @@ export const projects: Project[] = [
     title: "Gestimedical",
     description:
       "Healthcare platform supported by a complete GCP infrastructure for its frontend, backend, database and file storage, optimized for reliable operation and lower cloud costs.",
-    technologies: ["GCP", "Cloud Infrastructure", "SQL", "Cloud Storage"],
+    technologies: ["PHP 8.1", "Laravel", "GCP", "Cloud Infrastructure", "SQL", "Cloud Storage"],
     image: "/projects/gestimedical-preview.png",
     imageAlt: "Gestimedical healthcare management dashboard",
     contributions: [
       "GCP infrastructure architecture and deployment",
+      "Backend service migration from PHP 7.4 to PHP 8.1",
+      "Laravel for newer payment services",
       "Frontend and backend environment provisioning",
       "Database and cloud storage setup",
       "Cloud resource and cost optimization",

@@ -144,6 +144,8 @@ export const spanish: Record<string, string> = {
   "Healthcare platform supported by a complete GCP infrastructure for its frontend, backend, database and file storage, optimized for reliable operation and lower cloud costs.": "Plataforma de salud con infraestructura completa en GCP para frontend, backend, base de datos y almacenamiento de archivos, optimizada para una operación confiable y menores costos en la nube.",
   "Commercial real estate job network helping employers post opportunities and connect with talent, while professionals search and apply for roles from entry-level to executive. Worked with SelectLeaders through Curotec.": "Red de empleo del sector inmobiliario comercial que permite a las empresas publicar vacantes y conectar con talento, y a los profesionales buscar y postularse a puestos desde nivel inicial hasta ejecutivo. Trabajé con SelectLeaders a través de Curotec.",
   "Backend development": "Desarrollo backend",
+  "Backend service migration from PHP 7.4 to PHP 8.1": "Migración de servicios backend de PHP 7.4 a PHP 8.1",
+  "Laravel for newer payment services": "Uso de Laravel en los servicios más nuevos de la capa de pagos",
   "Stripe payment gateway integration": "Integración de pagos con Stripe",
   "Booking automation": "Automatización de reservas",
   "Admin dashboards": "Paneles administrativos",
