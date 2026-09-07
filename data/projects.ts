@@ -6,6 +6,7 @@ export interface Project {
   contributions: string[];
   image?: string;
   imageAlt?: string;
+  previewDevice?: "mobile";
   website?: string;
   details?: string;
 }
@@ -32,7 +33,7 @@ export const projects: Project[] = [
     id: "my-partner-sam",
     title: "My Partner Sam",
     description:
-      "Health and wellness platform that helps users plan meals, discover recipes and organize personalized nutrition routines.",
+      "Health and wellness app that helps users plan meals, discover recipes and organize personalized nutrition routines. Worked with My Partner Sam through Taller Technologies.",
     technologies: [
       "Laravel",
       "Laravel Queues",
@@ -45,6 +46,7 @@ export const projects: Project[] = [
     ],
     image: "/projects/my-partner-sam-preview.png",
     imageAlt: "My Partner Sam meal planning application interface",
+    previewDevice: "mobile",
     contributions: [
       "Backend APIs",
       "Frontend development",

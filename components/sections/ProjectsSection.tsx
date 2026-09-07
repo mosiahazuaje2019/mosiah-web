@@ -65,6 +65,27 @@ export function ProjectsSection() {
               >
                 <div className="relative lg:col-span-7">
                   <div className={`absolute -inset-8 -z-10 rounded-full ${style.glow} opacity-60 blur-3xl`} />
+                  {project.previewDevice === "mobile" && project.image ? (
+                    <div className={`relative flex justify-center overflow-hidden rounded-[2rem] bg-gradient-to-br ${style.surface} px-6 py-10 sm:py-12`}>
+                      <div className="relative w-full max-w-[320px] rounded-[3rem] border border-gray-600 bg-gray-950 p-2.5 shadow-[0_30px_60px_-20px_rgba(15,23,42,0.5)]">
+                        <div aria-hidden="true" className="flex h-7 items-center justify-center">
+                          <span className="h-1 w-12 rounded-full bg-gray-700" />
+                        </div>
+                        <div className="relative aspect-[438/933] overflow-hidden rounded-[2rem] bg-white">
+                          <Image
+                            src={project.image}
+                            alt={project.imageAlt || `${project.title} app preview`}
+                            width={1536}
+                            height={1024}
+                            sizes="1053px"
+                            className="absolute max-w-none"
+                            style={{ width: "350.685%", height: "109.753%", left: "-123.973%", top: "-5.145%" }}
+                          />
+                        </div>
+                        <div aria-hidden="true" className="mx-auto mb-1 mt-3 h-1 w-24 rounded-full bg-white/60" />
+                      </div>
+                    </div>
+                  ) : (
                   <div className="group relative rounded-[2rem] border border-white/90 bg-white/70 p-2.5 shadow-[0_32px_80px_-32px_rgba(31,41,55,0.35)] backdrop-blur sm:p-4">
                     <div className="overflow-hidden rounded-[1.45rem] border border-gray-200 bg-gray-950">
                       <div className="flex h-11 items-center border-b border-white/10 bg-gray-900 px-4">
@@ -105,6 +126,7 @@ export function ProjectsSection() {
                       )}
                     </div>
                   </div>
+                  )}
                   <div className={`absolute -bottom-4 rounded-full bg-gray-950 px-5 py-2 text-xs font-bold tracking-[0.18em] text-white shadow-xl ${reversed ? "-right-3 sm:-right-5" : "-left-3 sm:-left-5"}`}>
                     {project.image ? "PRODUCT PREVIEW" : "CASE STUDY"}
                   </div>
