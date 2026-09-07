@@ -70,17 +70,16 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "vyrtium",
-    title: "Vyrtium",
+    id: "select-leaders",
+    title: "Select Leaders",
     description:
-      "Financial technology platform with modern React frontend, NestJS backend, user plans, transaction workflows and payment integrations.",
-    technologies: ["React", "NestJS", "Node.js", "REST APIs", "NOWPayments", "Stripe"],
+      "Real estate recruitment platform connecting companies with talent and helping professionals find their next opportunity. Developed for Select Leaders through Curotec.",
+    technologies: ["Laravel", "Livewire", "MySQL", "OpenSearch"],
     contributions: [
-      "Frontend development",
-      "Backend APIs",
-      "Payment integrations",
-      "Business workflows",
-      "Cloud integrations",
+      "Interactive frontend development with Livewire",
+      "Backend development with Laravel",
+      "Job search and filtering with OpenSearch",
+      "Data management with MySQL",
     ],
   },
 ];
