@@ -23,7 +23,7 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sectionIds = ["about", "work", "seo", "tech", "process", "contact"];
+    const sectionIds = ["services", "about", "work", "seo", "tech", "process", "contact"];
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null);
@@ -41,6 +41,7 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
+    { name: "Services", href: "#services" },
     { name: "About", href: "#about" },
     { name: "Work", href: "#work" },
     { name: "SEO & GEO", href: "#seo" },
@@ -77,7 +78,7 @@ export function Navbar() {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3 xl:gap-4">
           {navLinks.map((link) => (
             <a
               key={link.name}
