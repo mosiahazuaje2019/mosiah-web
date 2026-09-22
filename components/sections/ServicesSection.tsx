@@ -73,8 +73,8 @@ export function ServicesSection() {
             <h3 className="text-xl font-bold">{t("Not sure where to start?")}</h3>
             <p className="mt-2 max-w-2xl leading-7 text-slate-300">{t("Tell me about your business. We can choose one service or combine several around your goals.")}</p>
           </div>
-          <a href="#plans" className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-slate-950 transition-colors hover:bg-violet-100">
-            {t("View plans and prices")} <ArrowUpRight size={18} aria-hidden="true" />
+          <a href="#contact" className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-slate-950 transition-colors hover:bg-violet-100">
+            {t("Let's talk about your business")} <ArrowUpRight size={18} aria-hidden="true" />
           </a>
         </div>
       </div>

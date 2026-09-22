@@ -81,7 +81,6 @@ export default function RootLayout({
               url: "https://mosiah.dev",
               sameAs: [
                 "https://www.linkedin.com/in/mosiahazuaje/",
-                "https://github.com/mosiahazuaje2019",
               ],
               knowsAbout: [
                 "React",

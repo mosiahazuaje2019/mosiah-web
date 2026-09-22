@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { SectionContainer } from "@/components/ui/SectionContainer";
 import { GradientText } from "@/components/ui/GradientText";
 import { Button } from "@/components/ui/Button";
-import { Mail, ExternalLink, Code } from "lucide-react";
+import { Mail, ExternalLink } from "lucide-react";
 
 export function ContactSection() {
   const { t } = useLanguage();
@@ -67,12 +67,6 @@ export function ContactSection() {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/mosiahazuaje/",
       color: "hover:text-blue-400",
-    },
-    {
-      icon: Code,
-      label: "GitHub",
-      href: "https://github.com/mosiahazuaje2019",
-      color: "hover:text-gray-300",
     },
   ];
 
